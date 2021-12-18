@@ -1,9 +1,14 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -22,14 +27,24 @@ public class POI {
 
     @Lob
     private String descripcion;
-    private Date date;
+
+    private LocalDate date;
 
     @ManyToOne()
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "FK_POI_CATEGORY"), nullable = true)
     private Category category;
 
+
+    @ManyToMany()
+    private List<Route> route= new ArrayList<>();
+
     private String coverPhoto;
     private String photo2;
     private String photo3;
+
+
+
+
+
 
 }
