@@ -44,7 +44,13 @@ public class POI {
     private String photo3;
 
 
+    public void addCategory(Category c) {
+        this.category = c;
+    }
 
+    public void removeCategory(Category c) {
+        this.category = null;
+    }
 
 
 

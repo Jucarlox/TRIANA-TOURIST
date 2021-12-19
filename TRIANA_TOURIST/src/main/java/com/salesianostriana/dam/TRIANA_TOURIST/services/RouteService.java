@@ -5,6 +5,7 @@ import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.ConverterRouteDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.CreatedRouteDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.GetRouteDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.ListEntityNotFoundException;
+import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.PoiRouteRepeatException;
 import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.SingleEntityNotFoundException;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.Category;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.POI;
@@ -73,11 +74,16 @@ public class RouteService extends BaseService<Route, Long, RouteRepository> {
 
     }
 
+
     public ResponseEntity<Route> addPoi(Long id, Long id2){
         Optional<Route> route= repositorio.findById(id);
         Optional<POI> poi= poiService.findById(id2);
 
         if(!route.isEmpty() && !poi.isEmpty()){
+
+            route.get().getPoiList().stream().forEach(m->{
+                if(m.getId().equals(id2)) throw new PoiRouteRepeatException(id2.toString(), Route.class);
+            });
             route.get().getPoiList().add(poi.get());
             repositorio.save(route.get());
             poi.get().getRoute().add(route.get());
@@ -89,7 +95,7 @@ public class RouteService extends BaseService<Route, Long, RouteRepository> {
            if(route.isEmpty()){
                throw new SingleEntityNotFoundException(id.toString(), Route.class);
            }else{
-               throw new SingleEntityNotFoundException(id.toString(), POI.class);
+               throw new SingleEntityNotFoundException(id2.toString(), POI.class);
            }
         }
 

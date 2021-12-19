@@ -10,7 +10,6 @@ public class ConverterCategoryDTO {
     public Category convertPOIDto(CreatedCategoryDTO createdCategoryDTO) {
         return Category.builder()
                 .name(createdCategoryDTO.getName())
-
                 .build();
 
     }

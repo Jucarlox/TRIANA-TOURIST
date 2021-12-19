@@ -1,6 +1,9 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.services;
 
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.Category.ConverterCategoryDTO;
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.Category.CreatedCategoryDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.ConverterPOIDTO;
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.CreatedPOIAndCategoryDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.CreatedPOIDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.GetPOIDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.GetRouteDTO;
@@ -24,6 +27,7 @@ public class POIService extends BaseService<POI, Long, POIRepository> {
 
     private final ConverterPOIDTO converterPOIDTO;
     private final CategoriaService categoriaService;
+    private final ConverterCategoryDTO converterCategoryDTO;
     public List<POI> findAll(){
         List<POI> result = repositorio.findAll();
 
@@ -75,6 +79,17 @@ public class POIService extends BaseService<POI, Long, POIRepository> {
             repositorio.delete(poi.get());
             return ResponseEntity.noContent().build();
         }
+
+    }
+
+    public POI createPoiAndCategory(CreatedPOIAndCategoryDTO createdPOIAndCategoryDTO){
+
+        POI poi=converterPOIDTO.convertPOICategoryDtoV1(createdPOIAndCategoryDTO);
+        Category category=converterPOIDTO.convertPOICategoryDtoV2(createdPOIAndCategoryDTO);
+        poi.addCategory(category);
+        categoriaService.save(category);
+        return repositorio.save(poi);
+
 
     }
 

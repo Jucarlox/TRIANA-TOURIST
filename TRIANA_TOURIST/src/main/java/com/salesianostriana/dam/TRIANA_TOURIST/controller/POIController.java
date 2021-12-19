@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.controller;
 
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.Category.CreatedCategoryDTO;
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.CreatedPOIAndCategoryDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.CreatedPOIDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.GetPOIDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.POI;
@@ -28,7 +30,7 @@ public class POIController {
     }
 
     @PostMapping("/")
-    public POI created(@Valid @RequestBody CreatedPOIDTO createdPOIDTO) {
+    public POI created( @Valid @RequestBody CreatedPOIDTO createdPOIDTO) {
         return poiService.created(createdPOIDTO);
     }
 
@@ -40,6 +42,11 @@ public class POIController {
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         return poiService.delete(id);
+    }
+
+    @PostMapping("/category")
+    public POI createPoiAndCategory(@Valid @RequestBody CreatedPOIAndCategoryDTO createdPOIAndCategoryDTO) {
+        return poiService.createPoiAndCategory(createdPOIAndCategoryDTO);
     }
 
 

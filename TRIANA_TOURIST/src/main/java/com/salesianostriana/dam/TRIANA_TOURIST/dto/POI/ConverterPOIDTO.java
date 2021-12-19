@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.dto.POI;
 
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.GetRouteDTO;
+import com.salesianostriana.dam.TRIANA_TOURIST.model.Category;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.POI;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.Route;
 import com.salesianostriana.dam.TRIANA_TOURIST.services.CategoriaService;
@@ -50,5 +51,25 @@ public class ConverterPOIDTO {
                 .photo3(poi.getPhoto3())
                 .build();
 
+    }
+
+
+
+    public POI convertPOICategoryDtoV1(CreatedPOIAndCategoryDTO createdPOIAndCategoryDTO) {
+        return POI.builder()
+                .name(createdPOIAndCategoryDTO.getName())
+                .location(createdPOIAndCategoryDTO.getLocation())
+                .descripcion(createdPOIAndCategoryDTO.getDescripcion())
+                .date(createdPOIAndCategoryDTO.getDate())
+                .coverPhoto(createdPOIAndCategoryDTO.getCoverPhoto())
+                .photo2(createdPOIAndCategoryDTO.getPhoto2())
+                .photo3(createdPOIAndCategoryDTO.getPhoto3())
+                .build();
+    }
+
+    public Category convertPOICategoryDtoV2(CreatedPOIAndCategoryDTO createdPOIAndCategoryDTO) {
+        return Category.builder()
+                .name(createdPOIAndCategoryDTO.getNameCategory())
+                .build();
     }
 }
