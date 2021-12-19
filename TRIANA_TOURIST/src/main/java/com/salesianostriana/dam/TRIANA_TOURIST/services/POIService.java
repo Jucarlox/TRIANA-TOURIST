@@ -2,6 +2,8 @@ package com.salesianostriana.dam.TRIANA_TOURIST.services;
 
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.ConverterPOIDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.CreatedPOIDTO;
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.GetPOIDTO;
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.GetRouteDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.ListEntityNotFoundException;
 import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.SingleEntityNotFoundException;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.Category;
@@ -34,8 +36,9 @@ public class POIService extends BaseService<POI, Long, POIRepository> {
     }
 
 
-    public POI findOne(Long id){
-        return repositorio.findById(id).orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), POI.class));
+    public GetPOIDTO findOne(Long id){
+        repositorio.findById(id).orElseThrow(() -> new SingleEntityNotFoundException(id.toString(), Route.class));
+        return converterPOIDTO.getePOIToPOIDto(repositorio.findById(id).get());
     }
 
     public POI created(CreatedPOIDTO createdPOIDTO) {

@@ -30,11 +30,12 @@ public class POI {
 
     private LocalDate date;
 
+
     @ManyToOne()
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "FK_POI_CATEGORY"), nullable = true)
     private Category category;
 
-
+    @JsonIgnore
     @ManyToMany()
     private List<Route> route= new ArrayList<>();
 

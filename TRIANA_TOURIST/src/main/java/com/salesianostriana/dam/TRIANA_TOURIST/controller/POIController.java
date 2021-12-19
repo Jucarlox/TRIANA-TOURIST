@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.controller;
 
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.CreatedPOIDTO;
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.GetPOIDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.POI;
 import com.salesianostriana.dam.TRIANA_TOURIST.services.POIService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class POIController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<POI> findOne(@PathVariable Long id){
+    public ResponseEntity<GetPOIDTO> findOne(@PathVariable Long id){
         return ResponseEntity.ok().body(poiService.findOne(id));
     }
 

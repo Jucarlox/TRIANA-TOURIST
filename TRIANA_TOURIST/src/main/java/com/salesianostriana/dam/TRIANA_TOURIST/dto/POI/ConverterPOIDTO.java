@@ -1,10 +1,15 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.dto.POI;
 
+import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.GetRouteDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.POI;
+import com.salesianostriana.dam.TRIANA_TOURIST.model.Route;
 import com.salesianostriana.dam.TRIANA_TOURIST.services.CategoriaService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 
@@ -20,6 +25,29 @@ public class ConverterPOIDTO {
                 .coverPhoto(createdPOIDTO.getCoverPhoto())
                 .photo2(createdPOIDTO.getPhoto2())
                 .photo3(createdPOIDTO.getPhoto3())
+                .build();
+
+    }
+
+    public GetPOIDTO getePOIToPOIDto(POI poi){
+
+        List<String> nombreRoute = new ArrayList<>();
+        for (int i=0; i<poi.getRoute().size();i++){
+            nombreRoute.add(poi.getRoute().get(i).getName());
+        }
+
+        return GetPOIDTO
+                .builder()
+                .id(poi.getId())
+                .name(poi.getName())
+                .descripcion(poi.getDescripcion())
+                .location(poi.getLocation())
+                .date(poi.getDate())
+                .category(poi.getCategory())
+                .nombreRoutes(nombreRoute)
+                .coverPhoto(poi.getCoverPhoto())
+                .photo2(poi.getPhoto2())
+                .photo3(poi.getPhoto3())
                 .build();
 
     }

@@ -20,7 +20,7 @@ public class Route {
 
     private String name;
 
-    @JsonIgnore
+
     @Builder.Default
     @ManyToMany(mappedBy = "route")
     private List<POI> poiList=new ArrayList<>();

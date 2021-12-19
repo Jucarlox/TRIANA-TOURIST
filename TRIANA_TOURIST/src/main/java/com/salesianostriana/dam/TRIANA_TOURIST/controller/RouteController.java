@@ -26,7 +26,7 @@ public class RouteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetRouteDTO> findOne(@PathVariable Long id){
+    public ResponseEntity<Route> findOne(@PathVariable Long id){
         return ResponseEntity.ok().body(routeService.findOne(id));
     }
 
@@ -43,5 +43,11 @@ public class RouteController {
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         return routeService.delete(id);
+    }
+
+
+    @PostMapping("/{id}/poi/{id2}")
+    public ResponseEntity<Route> addPoi(@PathVariable Long id,@PathVariable Long id2){
+        return routeService.addPoi(id,id2);
     }
 }

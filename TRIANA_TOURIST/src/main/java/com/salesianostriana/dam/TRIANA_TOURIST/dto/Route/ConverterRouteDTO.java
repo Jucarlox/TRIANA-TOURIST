@@ -14,7 +14,7 @@ public class ConverterRouteDTO {
     public GetRouteDTO geteRouteToRouteDto(Route ro){
 
         List<String> nombrePOI = new ArrayList<>();
-        List<String> descripcionPOI = new ArrayList<>();
+
         for (int i=0; i<ro.getPoiList().size();i++){
             nombrePOI.add(ro.getPoiList().get(i).getName());
         }
