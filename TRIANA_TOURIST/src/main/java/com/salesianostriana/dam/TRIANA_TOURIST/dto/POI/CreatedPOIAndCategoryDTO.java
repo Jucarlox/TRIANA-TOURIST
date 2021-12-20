@@ -1,6 +1,9 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.dto.POI;
 
 import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.CategoryNameUniqueValueMatch;
+import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.CategoryRepeatValueMatch;
+import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.LocationValueMacth;
+import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.UrlValueMacht;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +21,21 @@ import java.time.LocalDate;
 @CategoryNameUniqueValueMatch(
         nameCategoryField = "nameCategory",
         message = "{Category.name.unique}"
+)
+@UrlValueMacht(
+        coverPhotoValue = "coverPhoto",
+        photo2Value = "photo2",
+        photo3Value = "photo3",
+        message = "{Poi.url.diferent}"
+)
+@LocationValueMacth(
+        localizacionValue = "location",
+        message = "{Poi.location}"
+)
+
+@CategoryRepeatValueMatch(
+        idCategoryField = "category_id",
+        message = "{Poi.category.repeat}"
 )
 public class CreatedPOIAndCategoryDTO {
 

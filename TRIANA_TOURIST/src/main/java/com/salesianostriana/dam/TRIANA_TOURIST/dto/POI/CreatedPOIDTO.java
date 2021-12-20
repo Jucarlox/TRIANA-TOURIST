@@ -2,6 +2,7 @@ package com.salesianostriana.dam.TRIANA_TOURIST.dto.POI;
 
 import com.salesianostriana.dam.TRIANA_TOURIST.model.Category;
 import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.CategoryNameUniqueValueMatch;
+import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.CategoryRepeatValueMatch;
 import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.LocationValueMacth;
 import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.UrlValueMacht;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,11 @@ import java.time.LocalDate;
         message = "{Poi.location}"
 )
 
+@CategoryRepeatValueMatch(
+        idCategoryField = "category_id",
+        message = "{Poi.category.repeat}"
+)
+
 
 public class CreatedPOIDTO {
 
@@ -42,7 +48,7 @@ public class CreatedPOIDTO {
     private String descripcion;
     private LocalDate date;
 
-
+    private Long category_id;
 
 
     @NotNull(message = "{POI.coverPhoto.null}")

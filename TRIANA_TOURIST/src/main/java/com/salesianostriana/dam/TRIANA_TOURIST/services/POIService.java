@@ -46,7 +46,15 @@ public class POIService extends BaseService<POI, Long, POIRepository> {
     }
 
     public POI created(CreatedPOIDTO createdPOIDTO) {
-        return repositorio.save(converterPOIDTO.convertPOIDto(createdPOIDTO));
+        POI poi=converterPOIDTO.convertPOIDto(createdPOIDTO);
+        Optional<Category> category= categoriaService.findById(createdPOIDTO.getCategory_id());
+        if(category.isPresent()){
+            poi.setCategory(category.get());
+            return repositorio.save(poi);
+        }else{
+            throw new SingleEntityNotFoundException(createdPOIDTO.getCategory_id().toString(), Category.class);
+        }
+
     }
 
 

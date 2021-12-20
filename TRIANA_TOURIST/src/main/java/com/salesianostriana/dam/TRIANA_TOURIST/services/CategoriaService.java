@@ -5,6 +5,7 @@ import com.salesianostriana.dam.TRIANA_TOURIST.dto.Category.CreatedCategoryDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.POI.CreatedPOIDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.dto.Route.CreatedRouteDTO;
 import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.ListEntityNotFoundException;
+import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.PoiRouteRepeatException;
 import com.salesianostriana.dam.TRIANA_TOURIST.errores.excepciones.SingleEntityNotFoundException;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.Category;
 import com.salesianostriana.dam.TRIANA_TOURIST.model.POI;
@@ -24,6 +25,7 @@ import java.util.Optional;
 public class CategoriaService extends BaseService<Category, Long, CategoryRepository> {
     private final ConverterCategoryDTO converterCategoryDTO;
     private final POIRepository poiRepository;
+
     public List<Category> findAll(){
         List<Category> result = repositorio.findAll();
 
@@ -46,22 +48,23 @@ public class CategoriaService extends BaseService<Category, Long, CategoryReposi
     public Category edit(CreatedCategoryDTO createdCategoryDTO, Long id) {
         Optional<Category> category = repositorio.findById(id);
         if (category.isEmpty()) {
-            throw new SingleEntityNotFoundException(id.toString(), POI.class);
+            throw new SingleEntityNotFoundException(id.toString(), Category.class);
         } else {
-            return category.map(e -> {
-                e.setName(createdCategoryDTO.getName());
-                repositorio.save(e);
-                return e;
-            }).get();
+            category.get().setName(createdCategoryDTO.getName());
+            return repositorio.save(category.get());
         }
     }
 
     public ResponseEntity delete(Long id){
         Optional<Category> category= repositorio.findById(id);
+
         if (category.isEmpty()){
             return ResponseEntity.noContent().build();
         }else{
-
+            poiRepository.allCategoryPOI(id).forEach(m->{
+                m.setCategory(null);
+                poiRepository.save(m);
+            });
             repositorio.delete(category.get());
             return ResponseEntity.noContent().build();
         }

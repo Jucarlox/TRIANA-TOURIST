@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "e7922d61-265d-4ed9-8bd7-c54f746dc530",
+		"name": "TRIANA TOURIST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POI",
+			"item": [
+				{
+					"name": "Find all Poi",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/poi/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"poi",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by ID Poi",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/poi/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"poi",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Poi with Asociated Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Salesianos Triana\",\r\n    \"location\":\"-33.9842244,77.23478902\",\r\n    \"descripcion\":\"Casa Salesiana creada por Don Bosco\",\r\n    \"date\":\"1990-11-13\",\r\n    \"category_id\":5,\r\n    \"coverPhoto\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8QukxN2MZMtuK-qLlhWlwS0M_qdY7VKxsOWro_y16K2V-UZV1VZLK9nYlOXaCfDxe1s4&usqp=CAU\",\r\n    \"photo2\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8QukxNMZMtuK-qLlhWlwS0M_qdY7VKxsOWro_y16K2V-UZV1VZLK9nYlOXaCfDxe1s4&usqp=CAU\",\r\n    \"photo3\":null\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/poi/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"poi",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Poi",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Salesianos Triana\",\r\n    \"location\":\"Huelva\",\r\n    \"descripcion\":\"Casa Salesiana creada por Don Bosco\",\r\n    \"date\":\"1990-11-13\",\r\n    \"coverPhoto\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8QukxNMZMtuK-qLlhWlwS0M_qdY7VKxsOWro_y16K2V-UZV1VZLK9nYlOXaCfDxe1s4&usqp=CAU\",\r\n    \"photo2\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8QukxNMZMtuK-qLlhWlwS0M_qdY7VKxsOWro_y16K2V-UZV1VZLK9nYlOXaCfDxe1s4&usqp=CAU\",\r\n    \"photo3\":null\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/poi/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"poi",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Poi",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/poi/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"poi",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Poi and Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Salesiandos Trina\",\r\n    \"location\":\"-33.9842244,77.23478902\",\r\n    \"descripcion\":\"Casa Salesiana creada por Don Bosco\",\r\n    \"date\":\"1990-11-13\",\r\n    \"coverPhoto\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8QukxNMZMtuK-qLlhWlwS0M_qdY7VKxsOWro_y16K2V-UZV1VZLK9nYlOXaCfDxe1s4&usqp=CAU\",\r\n    \"photo2\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST8QukxNMZMtuK-qLlhWlwS0M_qdY7VKxsOWro_y16K2V-UZV1VZLK9nYlOXaCfDxe1s4&usqp=CAU\",\r\n    \"photo3\":null,\r\n    \r\n    \"nameCategory\":\"Parque\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/poi/category",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"poi",
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Route",
+			"item": [
+				{
+					"name": "FindAll Route",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/route/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by ID Route",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/route/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Route",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Parque del Tamarguillo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/route/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Route",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/route/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Route",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Parque del Tamarguillo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/route/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Poi in Route",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/route/7/poi/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								"7",
+								"poi",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "FindAll Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/category/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By ID Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/category/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Parque\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/category/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Pase Maritimo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/category/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/category/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"category",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
