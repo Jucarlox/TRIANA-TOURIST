@@ -1,5 +1,5 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones;
-
+/* No lo uso al final
 import com.salesianostriana.dam.TRIANA_TOURIST.validacion.validadores.PoiRouteDiferentValueMatchValidator;
 
 import javax.validation.Constraint;
@@ -21,3 +21,5 @@ public @interface PoiRouteDiferentValueMatch {
     String idPOI();
 
 }
+
+ */

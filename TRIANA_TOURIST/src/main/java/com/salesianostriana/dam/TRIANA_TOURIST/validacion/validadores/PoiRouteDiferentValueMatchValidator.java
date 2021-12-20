@@ -1,5 +1,5 @@
 package com.salesianostriana.dam.TRIANA_TOURIST.validacion.validadores;
-
+/* No lo uso al final
 import com.salesianostriana.dam.TRIANA_TOURIST.model.Route;
 import com.salesianostriana.dam.TRIANA_TOURIST.repository.RouteRepository;
 import com.salesianostriana.dam.TRIANA_TOURIST.validacion.anotaciones.PoiRouteDiferentValueMatch;
@@ -8,6 +8,7 @@ import org.springframework.beans.PropertyAccessorFactory;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
 @RequiredArgsConstructor
 public class PoiRouteDiferentValueMatchValidator  implements ConstraintValidator<PoiRouteDiferentValueMatch,String> {
 
@@ -39,3 +40,4 @@ public class PoiRouteDiferentValueMatchValidator  implements ConstraintValidator
         return false;
     }
 }
+*/
